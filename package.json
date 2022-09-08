@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.5.5"
+  },
+  "name": "bi-assignment",
+  "description": "BI Assignment",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamadityaraj04/bi-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamadityaraj04/bi-assignment/issues"
+  },
+  "homepage": "https://github.com/iamadityaraj04/bi-assignment#readme"
+}
