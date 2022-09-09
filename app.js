@@ -5,7 +5,7 @@ const app=express();
 
 //requiring db
 require("./db/dbConnect.js");
-const port=8080;
+const port=process.env.port || 8080;
 const tasks=require("./db/dbSchema.js")
 
 app.use(bodyparser.urlencoded({extended:true}));
