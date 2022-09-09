@@ -4,7 +4,7 @@ const bodyparser=require('body-parser');
 const app=express();
 
 //requiring db
-require("./db/dbConnect.js");
+const db=require("./db/dbConnect.js");
 const port=process.env.port || 5000;
 const tasks=require("./db/dbSchema.js")
 
@@ -30,17 +30,27 @@ app.get("/add",(req,res)=>{
 })
 //inserting data using post method
 app.post("/add",(req,res)=>{
+    const taskName=req.body.taskName;
+    const taskDescription=req.body.taskDescription;
+    const creator=req.body.creator;
+    const duration=req.body.duration;
+
     const task=new tasks({
-        TaskName:req.body.taskName,
-        TaskDescription:req.body.taskDescription,
-        Creator:req.body.creator,
-        Duration:req.body.duration,
+        TaskName:taskName,
+        TaskDescription:taskDescription,
+        Creator:creator,
+        Duration:duration,
     });
     task.save().then(()=>{
+        setTimeout(() => {
+            task.remove({Duration:duration});
+        }, duration*60*1000);
         res.redirect('/add');
     }).catch((err)=>{
         res.send(err);
     })
+    //tasks.remove({Duration:duration});
+
 })
 
 //starting server
