@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Application</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+        *{
+            font-family: 'Montserrat', sans-serif;
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background-color: rgb(0, 119, 198);
+        }
+        #title{
+            font-size: 60px;
+            color: white;
+            font-weight: 400;
+            margin-top: 80px;
+            margin-bottom: 40px;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: lightgray;
+        opacity: 1; /* Firefox */
+        }
+        .input{
+            width: 300px;
+            height: 40px;
+            border: none;
+            background-color:rgb(0, 119, 198) ;
+            border-bottom: 1px solid black;
+            color: white;
+            font-size: 20px;
+            outline: none;
+            padding: 5px;
+            margin: 5px 30px;
+        }
+        #btn{
+            margin: 5px;
+            width: 100px;
+            height: 40px;
+            border: none;
+            background-color: red;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        #btn:hover{
+            cursor: pointer;
+            background-color: rgb(200, 0, 0);
+        }
+       
+    </style>
+</head>
+<body>
+        <div class="container">
+            <p id="title">Add Task</p>  
+            <form action="/" method="post">
+                <input  placeholder="Task Name" name="taskName" class="input"><br>
+                <input placeholder="Task Description" name="taskDescription" class="input"><br>
+                <input  placeholder="Creator" name="creator" class="input"><br>
+                <input  placeholder="Duration(in minutes)" name="duration" class="input"><br><br> 
+                <button type="submit" id="btn" >Save</button>
+            </form>
+        </div>
+    
+    </body>
+</html>
