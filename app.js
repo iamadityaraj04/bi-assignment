@@ -4,20 +4,25 @@ const bodyparser=require('body-parser');
 const app=express();
 
 //requiring db
-const db=require("./db/dbConnect.js");
+require("./db/dbConnect.js");
 const port=process.env.port || 5000;
 const tasks=require("./db/dbSchema.js")
 
 app.use(bodyparser.urlencoded({extended:true}));
 
 app.get('/',(req,res)=>{
-    res.send("Board Infinity Assignment");
+    res.send(`
+    <p style="font-size: 100px;">Board Infinity Assignment</p>
+    <p style="font-size: 60px;">Endpoints:<br> /add - to add data to database<br>/list - to get data of database</p>
+    
+    `);
 })
 
+//getting data in jason format
 app.get("/list",async (req,res)=>{
     if(req.query){
         try{
-            const taskData=await tasks.find({});
+            const taskData=await tasks.find({},{TaskName:1,TaskDescription:1,Creator:1,Duration:1});
             res.send(taskData);
         }catch(err){
             res.send(err);
@@ -42,6 +47,7 @@ app.post("/add",(req,res)=>{
         Duration:duration,
     });
     task.save().then(()=>{
+        //removing data from db after given duration
         setTimeout(() => {
             task.remove({Duration:duration});
         }, duration*60*1000);
@@ -49,7 +55,6 @@ app.post("/add",(req,res)=>{
     }).catch((err)=>{
         res.send(err);
     })
-    //tasks.remove({Duration:duration});
 
 })
 
