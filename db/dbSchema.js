@@ -3,20 +3,16 @@ const mongoose=require("mongoose");
 //db schema
 const listSchema=new mongoose.Schema({
     TaskName:{
-        type:String,
-        required:true
+        type:String
     },
     TaskDescription:{
-        type:String,
-        require:true
+        type:String
     },
     Creator:{
-        type:String,
-        require:true
+        type:String
     },
     Duration:{
-        type:Number,
-        require:true
+        type:Number
     }
 },
 {

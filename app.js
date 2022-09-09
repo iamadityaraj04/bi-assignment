@@ -5,7 +5,7 @@ const app=express();
 
 //requiring db
 require("./db/dbConnect.js");
-const port=process.env.port || 8080;
+const port=process.env.port || 5000;
 const tasks=require("./db/dbSchema.js")
 
 app.use(bodyparser.urlencoded({extended:true}));
@@ -36,13 +36,11 @@ app.post("/add",(req,res)=>{
         Creator:req.body.creator,
         Duration:req.body.duration,
     });
-    task.save();
-    res.redirect('/add');
-    // task.save().then(()=>{
-    //     res.redirect('/add');
-    // }).catch((err)=>{
-    //     res.send(err);
-    // })
+    task.save().then(()=>{
+        res.redirect('/add');
+    }).catch((err)=>{
+        res.send(err);
+    })
 })
 
 //starting server
